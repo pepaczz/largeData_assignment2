@@ -1,0 +1,30 @@
+SELECT * FROM frequency
+
+SELECT count(*) FROM (
+  SELECT * FROM frequency WHERE 
+
+SELECT count(*) FROM( SELECT * FROM frequency WHERE docid = '10398_txt_earn');
+138
+
+SELECT count(*) FROM( SELECT term FROM frequency WHERE docid = '10398_txt_earn' AND count = 1);
+110
+
+SELECT count(*) FROM(
+SELECT term FROM frequency WHERE docid = '10398_txt_earn' AND count = 1 UNION SELECT term FROM frequency WHERE docid = '925_txt_trade' AND count = 1);
+324
+
+SELECT count(*) FROM(
+SELECT DISTINCT docid FROM(
+SELECT * FROM frequency WHERE term = 'legal' OR term = 'law'));
+58
+
+select count(*) from(
+select docid, sum(count) from frequency group by docid having sum(count)>300);
+107
+
+select count(*) from(
+SELECT A.docid, A.term, B.docid, B.term
+FROM frequency A INNER JOIN frequency B ON A.docid = B.docid
+WHERE (A.term = 'transactions' AND B.term = 'world'));
+3
+
